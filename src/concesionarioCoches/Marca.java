@@ -1,13 +1,13 @@
 /**
  * 
  */
-package pgn.examenMarzo.concesionarioCoches;
+package concesionario;
 
 /**
  * Representa cada una de las marcas
  * 
- * @author Javier BenÃ­tez del Pozo
- * @version 2.0
+ * @author Javier Benítez del Pozo
+ * @version 1.0
  */
 public enum Marca {
 	

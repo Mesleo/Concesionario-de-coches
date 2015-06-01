@@ -1,7 +1,7 @@
 /**
  * 
  */
-package pgn.examenMarzo.concesionarioCoches;
+package concesionario;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -23,15 +23,10 @@ import java.util.ArrayList;
  * de las características del coche puede ser por defecto.
  * 
  * @author Javier Benítez del Pozo
- * @version 2.0
+ * @version 1.0
  */
-public class Concesionario implements Serializable {
+public class Concesionario implements Serializable{
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
 	/**
 	 * Colección de coches. No puede tener null.
 	 */
@@ -53,22 +48,11 @@ public class Concesionario implements Serializable {
 	 *            Representa el modelo del coche a añadir
 	 * @return true si el coche se añade, false en otro caso (el coche es null o
 	 *         el coche ya está contenido en el almacen)
-	 * 
-	 * @throws MatriculaNoValidaException
-	 *             Si la matrícula no es válida
-	 * @throws ColorNoValidoException
-	 *             Si el color no es válido
-	 * @throws ModeloNoValidoException
-	 *             Si el modelo no es válido
-	 * @throws CocheYaExisteException
-	 *             Si el coche ya existe en el concesionario
 	 */
-	public boolean annadir(String matricula, Color color, Modelo modelo)
-			throws MatriculaNoValidaException, ColorNoValidoException,
-			ModeloNoValidoException, CocheYaExisteException {
-		Coche coche = new Coche(matricula, color, modelo);
-		if (almacen.contains(coche))
-			throw new CocheYaExisteException("El coche ya existe.");
+	public boolean annadir(String matricula, Color color, Modelo modelo) {
+		Coche coche = Coche.instanciarCoche(matricula, color, modelo);
+		if (coche == null || almacen.contains(coche))
+			return false;
 		return almacen.add(coche);
 	}
 
@@ -79,17 +63,9 @@ public class Concesionario implements Serializable {
 	 *            Representa la matrícula del coche a eliminar
 	 * @return true si el coche se elimina, false en otro caso (el coche no está
 	 *         en el almacen)
-	 * @throws MatriculaNoValidaException
-	 *             Si la matrícula no es válida
-	 * @throws CocheNoExisteException
-	 *             Si el coche no existe en el concesionario
 	 */
-	public boolean eliminar(String matricula)
-			throws MatriculaNoValidaException, CocheNoExisteException {
-		Coche coche = new Coche(matricula);
-		if (!almacen.contains(coche))
-			throw new CocheNoExisteException("El coche no existe.");
-		return almacen.remove(coche);
+	public boolean eliminar(String matricula) {
+		return almacen.remove(Coche.instanciarCoche(matricula));
 	}
 
 	/**
@@ -107,29 +83,16 @@ public class Concesionario implements Serializable {
 	 * @param matricula
 	 *            Representa la matrícula a buscar
 	 * @return Coche contenido en el almacen. null si no existe
-	 * @throws MatriculaNoValidaException
-	 *             Si la matrícula no es válida
-	 * @throws CocheNoExisteException
-	 *             Si el coche no existe en el concesionario
 	 */
-	public Coche get(String matricula) throws MatriculaNoValidaException,
-			CocheNoExisteException {
-		Coche coche = new Coche(matricula);
+	public Coche get(String matricula) {
+		Coche coche = Coche.instanciarCoche(matricula);
 		int index = almacen.indexOf(coche);
 		if (index != -1) {
 			return almacen.get(index);
-		} else {
-			throw new CocheNoExisteException("El coche no existe.");
 		}
+		return null;
 	}
 	
-	/**
-	 * Devuelve el coche indicado por el índice
-	 * 
-	 * @param index
-	 *            Representa el índice a buscar
-	 * @return Coche contenido en el almacen. null si no existe
-	 */
 	public Coche get(int index) {
 		if(almacen.isEmpty())
 			return null;
@@ -158,10 +121,11 @@ public class Concesionario implements Serializable {
 	public ArrayList<Coche> getCochesColor(Color color) {
 		ArrayList<Coche> arrCochesColor = new ArrayList<Coche>();
 		for (Coche coche : almacen) {
-			if (coche.getColor() == color)
+			if(coche.getColor()== color)
 				arrCochesColor.add(coche);
 		}
 		return arrCochesColor;
 	}
+
 
 }

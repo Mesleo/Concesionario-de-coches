@@ -1,7 +1,7 @@
 /**
  * 
  */
-package pgn.examenMarzo.concesionarioCoches;
+package concesionario;
 
 /**
  * Se limitarán los colores a tres: plata, rojo y azul. Para solicitar el color
@@ -9,7 +9,7 @@ package pgn.examenMarzo.concesionarioCoches;
  * la gestión de un menú, devolverá el color indicado.
  * 
  * @author Javier Benítez del Pozo
- * @version 2.0
+ * @version 1.0
  */
 public enum Color {
 	

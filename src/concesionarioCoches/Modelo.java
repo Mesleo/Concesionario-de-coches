@@ -1,7 +1,7 @@
 /**
  * 
  */
-package pgn.examenMarzo.concesionarioCoches;
+package concesionario;
 
 /**
  * Se limitarán los modelos de coches a siete: Córdoba (marca Seat), Toledo
@@ -11,7 +11,7 @@ package pgn.examenMarzo.concesionarioCoches;
  * gestión de un menú, devolverá el modelo indicado.
  * 
  * @author Javier Benítez del Pozo
- * @version 2.0
+ * @version 1.0
  */
 public enum Modelo {
 
