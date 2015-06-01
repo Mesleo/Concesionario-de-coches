@@ -1,10 +1,24 @@
-package concesionarioCoches;
 /**
- * Marcas de los coches del concesionario
  * 
- * @author Javier Benitez del Pozo
- *
+ */
+package pgn.examenMarzo.concesionarioCoches;
+
+/**
+ * Representa cada una de las marcas
+ * 
+ * @author Javier Benítez del Pozo
+ * @version 2.0
  */
 public enum Marca {
-	BMW, SEAT
+	
+	/**
+	 * Representa la marca BMW
+	 */
+	BMW, 
+	
+	/**
+	 * Representa la marca SEAT
+	 */
+	SEAT
+	
 }
